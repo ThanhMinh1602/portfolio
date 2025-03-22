@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  // Widget để hiển thị SVG responsive
+  // Widget để hiển thị SVG responsives
   Widget _buildSvgDivider(String assetPath, double screenWidth) {
     return Center(
       child: Container(
