@@ -6,6 +6,10 @@ import 'package:new_portfolio/widgets/footer.dart';
 import 'package:new_portfolio/widgets/my_info_widget.dart';
 import 'package:new_portfolio/widgets/skill_widget.dart';
 import 'package:new_portfolio/widgets/welcome_widget.dart';
+import 'package:new_portfolio/widgets/objective_widget.dart'; // Thêm mới
+import 'package:new_portfolio/widgets/education_widget.dart'; // Thêm mới
+import 'package:new_portfolio/widgets/work_experience_widget.dart'; // Thêm mới
+import 'package:new_portfolio/widgets/interests_widget.dart'; // Thêm mới
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -19,40 +23,39 @@ class HomePage extends StatelessWidget {
       body: ListView(
         children: [
           WelcomeWidget(),
-          SizedBox(
-            height: screenWidth < 600 ? 10 : 20,
-          ), // Giảm khoảng cách trên điện thoại
+          SizedBox(height: screenWidth < 600 ? 10 : 20),
+          _buildSvgDivider(Assets.icons.frame1, screenWidth),
+          ObjectiveWidget(),
+          SizedBox(height: screenWidth < 600 ? 10 : 20),
+          _buildSvgDivider(Assets.icons.frame2, screenWidth),
+          EducationWidget(),
+          SizedBox(height: screenWidth < 600 ? 10 : 20),
           _buildSvgDivider(Assets.icons.frame1, screenWidth),
           SkillWidget(),
           SizedBox(height: screenWidth < 600 ? 10 : 20),
           _buildSvgDivider(Assets.icons.frame2, screenWidth),
+          WorkExperienceWidget(),
+          SizedBox(height: screenWidth < 600 ? 10 : 20),
+          _buildSvgDivider(Assets.icons.frame1, screenWidth),
           MyInfoWidget(),
+          SizedBox(height: screenWidth < 600 ? 10 : 20),
+          _buildSvgDivider(Assets.icons.frame2, screenWidth),
+          InterestsWidget(),
           FooterWidget(),
         ],
       ),
     );
   }
 
-  // Widget để hiển thị SVG responsives
   Widget _buildSvgDivider(String assetPath, double screenWidth) {
     return Center(
       child: Container(
-        width:
-            screenWidth > 1440
-                ? 1440.0
-                : screenWidth * 0.9, // Giới hạn hoặc 90% màn hình
+        width: screenWidth > 1440 ? 1440.0 : screenWidth * 0.9,
         padding: EdgeInsets.symmetric(vertical: screenWidth < 600 ? 10 : 20),
         child: SvgPicture.asset(
           assetPath,
-          height:
-              screenWidth < 600
-                  ? screenWidth * 0.6
-                  : null, // 60% chiều cao trên điện thoại
-          width:
-              screenWidth < 600
-                  ? screenWidth * 0.8
-                  : null, // 80% chiều rộng trên điện thoại
-          // Giữ tỷ lệ SVG
+          height: screenWidth < 600 ? screenWidth * 0.6 : null,
+          width: screenWidth < 600 ? screenWidth * 0.8 : null,
         ),
       ),
     );

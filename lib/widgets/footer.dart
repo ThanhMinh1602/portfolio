@@ -19,16 +19,27 @@ class FooterWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            'Let’s Connect!',
-            style: AppStyle.title.copyWith(
-              fontSize: screenWidth < 600 ? 20 : 24,
-              color: Colors.white,
-            ),
+          // Chỉ thay đổi phần tiêu đề
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset(
+                Assets.icons.star,
+                width: screenWidth < 600 ? 16 : 20,
+              ),
+              SizedBox(width: 8),
+              Text(
+                'Let’s Connect!',
+                style: AppStyle.title.copyWith(
+                  fontSize: screenWidth < 600 ? 20 : 24,
+                  color: Colors.white,
+                ),
+              ),
+            ],
           ),
           SizedBox(height: screenWidth < 600 ? 15 : 20),
           Text(
-            'Email: ntminh16201@gmail.com\nPhone: +84 798 334 803',
+            'Email: ntminh16201@gmail.com\nPhone: +84 798 334 803\nGitHub: github.com/ThanhMinh1602',
             textAlign: TextAlign.center,
             style: AppStyle.button.copyWith(
               fontSize: screenWidth < 600 ? 12 : 14,
@@ -37,7 +48,7 @@ class FooterWidget extends StatelessWidget {
           ),
           SizedBox(height: screenWidth < 600 ? 15 : 20),
           Text(
-            '© 2025 Thanh Minh. All rights reserved.',
+            '© 2025 Nguyễn Thanh Minh. All rights reserved.',
             style: AppStyle.button.copyWith(
               fontSize: screenWidth < 600 ? 10 : 12,
               color: Colors.white60,

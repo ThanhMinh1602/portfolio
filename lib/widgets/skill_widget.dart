@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:new_portfolio/constants/app_color.dart';
 import 'package:new_portfolio/constants/app_style.dart';
+import 'package:new_portfolio/gen/assets.gen.dart';
 import 'package:new_portfolio/widgets/gradient_text_custom.dart';
 
 class SkillWidget extends StatelessWidget {
   SkillWidget({super.key});
 
   final Map<String, List<String>> skillCategories = {
-    'Programming Languages': ['Dart', 'JavaScript', 'Kotlin'],
+    'Programming Languages': ['Dart', 'JavaScript', 'Kotlin (Learning)'],
     'Frameworks & Libraries': [
       'Flutter',
       'Node.js',
@@ -16,17 +18,18 @@ class SkillWidget extends StatelessWidget {
       'Provider',
       'GetX',
     ],
-    'Architectures': ['OOP', 'Clean Architecture', 'MVC', 'MVVM'],
-    'Databases': ['SQLite', 'Firebase', 'MongoDB', 'Shared Preferences'],
-    'APIs & Tools': ['REST API', 'Swagger UI', 'WebSocket', 'Postman'],
-    'Testing': ['Unit Test', 'Integration Test'],
-    'DevOps & Collaboration': [
-      'Git',
-      'GitHub Actions',
-      'Backlog',
-      'Team collaboration',
+    'Architectural Patterns': [
+      'OOP',
+      'Clean Architecture',
+      'MVC',
+      'MVVM',
+      'Dartz',
     ],
-    'Others': ['English technical reading comprehension', 'Android (Kotlin)'],
+    'Databases': ['SQLite', 'Shared Preferences', 'Firebase', 'MongoDB'],
+    'Networking': ['REST API', 'Swagger UI', 'WebSocket'],
+    'Testing': ['Unit Test', 'Integration Test'],
+    'CI/CD & Tools': ['Git', 'GitHub Actions', 'Backlog', 'Postman'],
+    'Soft Skills': ['Team Collaboration', 'English Technical Reading'],
   };
 
   @override
@@ -47,12 +50,24 @@ class SkillWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                'Skills',
-                style: AppStyle.title.copyWith(
-                  fontSize: screenWidth < 600 ? 28 : 36,
-                ),
+              // Chỉ thay đổi phần tiêu đề
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    Assets.icons.star,
+                    width: screenWidth < 600 ? 20 : 30,
+                  ),
+                  SizedBox(width: 10),
+                  Text(
+                    'My Skills',
+                    style: AppStyle.title.copyWith(
+                      fontSize: screenWidth < 600 ? 28 : 36,
+                    ),
+                  ),
+                ],
               ),
+              SizedBox(height: screenWidth < 600 ? 20 : 40),
               SizedBox(height: screenWidth < 600 ? 20 : 40),
               ...skillCategories.entries.map((entry) {
                 return Column(

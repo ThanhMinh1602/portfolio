@@ -9,19 +9,50 @@ import 'package:new_portfolio/pages/project_detail_page.dart';
 class MyInfoWidget extends StatelessWidget {
   MyInfoWidget({super.key});
 
-  final List<Map<String, String>> projects = [
+  final List<Map<String, dynamic>> projects = [
     {
-      'title': 'E-Commerce App',
+      'title': 'To Do',
       'description':
-          'A mobile app for online shopping built with Flutter and Firebase.',
+          'A task management app with authentication and CRUD operations.',
+      'technologies': [
+        'Flutter',
+        'Firebase',
+        'BLoC',
+        'Clean Architecture',
+        'GitHub Actions',
+      ],
+      'link': 'https://github.com/ThanhMinhProjects/todo_bloc.git',
     },
     {
-      'title': 'Chat Application',
-      'description': 'Real-time messaging app using WebSocket and Node.js.',
+      'title': 'Momentsy',
+      'description':
+          'A mobile app for capturing photos, sharing moments, and real-time chat.',
+      'technologies': [
+        'Flutter',
+        'GetX',
+        'Node.js',
+        'WebSocket',
+        'Google Cloud',
+      ],
+      'link': 'https://github.com/ThanhMinh1602/momentsy',
     },
     {
-      'title': 'Portfolio Website',
-      'description': 'A personal portfolio built with Flutter for web.',
+      'title': 'Aloo',
+      'description': 'A sim card selling app for Vietnamese people in Japan.',
+      'technologies': ['Flutter', 'Firebase', 'Python'],
+      'link': 'https://play.google.com/store/apps/details?id=jp.aloo',
+    },
+    {
+      'title': 'Rikai Assistant',
+      'description': 'A chat bot for task progress reporting on Google Chat.',
+      'technologies': ['Express.js', 'MySQL', 'Docker', 'Google Cloud'],
+      'link': null,
+    },
+    {
+      'title': 'Global Camera',
+      'description': 'An app for streaming and managing camera videos on AWS.',
+      'technologies': ['Flutter', 'PHP Laravel', 'AWS'],
+      'link': null,
     },
   ];
 
@@ -43,9 +74,8 @@ class MyInfoWidget extends StatelessWidget {
       children: [
         SizedBox(width: screenWidth < 600 ? 10 : 195),
         Text(
-          "The projects I've worked on!",
+          "Projects & Experiences",
           textAlign: TextAlign.center,
-
           style: AppStyle.title.copyWith(fontSize: screenWidth < 600 ? 28 : 36),
         ),
         SvgPicture.asset(Assets.icons.star, width: screenWidth < 600 ? 20 : 30),
@@ -67,24 +97,17 @@ class MyInfoWidget extends StatelessWidget {
               MaterialPageRoute(
                 builder:
                     (context) => ProjectDetailPage(
-                      title: projects[index]['title']!,
-                      description: projects[index]['description']!,
-                      technologies: [
-                        'Flutter',
-                        'Firebase',
-                        'REST API',
-                      ], // Cập nhật theo dự án
-                      // videoUrl:
-                      //     'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4',
-                      link:
-                          'https://github.com/yourprofile/${projects[index]['title']!.toLowerCase().replaceAll(' ', '-')}',
+                      title: projects[index]['title'],
+                      description: projects[index]['description'],
+                      technologies: projects[index]['technologies'],
+                      link: projects[index]['link'],
                     ),
               ),
             );
           },
           child: _buildProjectCard(
-            projects[index]['title']!,
-            projects[index]['description']!,
+            projects[index]['title'],
+            projects[index]['description'],
             screenWidth,
           ),
         ),
@@ -98,10 +121,7 @@ class MyInfoWidget extends StatelessWidget {
     double screenWidth,
   ) {
     return Container(
-      width:
-          screenWidth < 600
-              ? screenWidth * 0.9
-              : 300, // 90% chiều rộng màn hình trên điện thoại
+      width: screenWidth < 600 ? screenWidth * 0.9 : 300,
       height: screenWidth < 600 ? 150 : 180,
       padding: EdgeInsets.all(screenWidth < 600 ? 15 : 20),
       decoration: BoxDecoration(
@@ -124,12 +144,6 @@ class MyInfoWidget extends StatelessWidget {
             blurRadius: 15,
             offset: Offset(0, 8),
             spreadRadius: 2,
-          ),
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.1),
-            blurRadius: 10,
-            offset: Offset(0, 4),
-            spreadRadius: 1,
           ),
         ],
       ),
