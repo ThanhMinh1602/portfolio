@@ -163,7 +163,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                 repoOwner: widget.repoOwner,
                 repoName: widget.repoName,
                 branch: widget.branch,
-                token: dotenv.env['GITHUB_API_KEY']!,
+                token: dotenv.env['KEY_GITHUB_API']!,
               ),
               FooterWidget(),
             ],
