@@ -24,7 +24,7 @@ class WelcomeWidget extends StatelessWidget {
             _buildProfileImage(context),
             SizedBox(height: screenWidth < 600 ? 10 : 16),
             GradientTextCustom(
-              text: 'Hi. I’m Nguyễn Thanh Minh',
+              text: 'Hi. I’m Nguyen Thanh Minh',
               colors: AppColor.grapeGradient,
               style: AppStyle.hugeHeadline.copyWith(
                 fontSize: screenWidth < 600 ? 24 : 48,
@@ -50,7 +50,7 @@ class WelcomeWidget extends StatelessWidget {
             ),
             SizedBox(height: 8),
             Text(
-              'k583/15 Tôn Đức Thắng, Hòa Khánh Nam, Liên Chiểu, TP Đà Nẵng',
+              'k583/15 Ton Duc Thang, Hoa Khanh Nam, Lien Chieu, TP Đa Nang',
               style: AppStyle.button.copyWith(
                 fontSize: screenWidth < 600 ? 12 : 14,
                 color: Colors.white60,

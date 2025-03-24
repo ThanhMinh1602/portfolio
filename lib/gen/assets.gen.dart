@@ -35,11 +35,22 @@ class $AssetsImagesGen {
   List<AssetGenImage> get values => [appicon];
 }
 
+class $AssetsJsonsGen {
+  const $AssetsJsonsGen();
+
+  /// File path: assets/jsons/background1.json
+  String get background1 => 'assets/jsons/background1.json';
+
+  /// List of all assets
+  List<String> get values => [background1];
+}
+
 class Assets {
   const Assets._();
 
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsJsonsGen jsons = $AssetsJsonsGen();
 }
 
 class AssetGenImage {
