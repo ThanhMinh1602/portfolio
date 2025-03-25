@@ -41,7 +41,7 @@ class FooterWidget extends StatelessWidget {
           Text(
             'Email: ntminh16201@gmail.com\nPhone: +84 798 334 803\nGitHub: github.com/ThanhMinh1602',
             textAlign: TextAlign.center,
-            style: AppStyle.button.copyWith(
+            style: AppStyle.subTitle.copyWith(
               fontSize: screenWidth < 600 ? 12 : 14,
               color: Colors.white70,
             ),
@@ -49,7 +49,7 @@ class FooterWidget extends StatelessWidget {
           SizedBox(height: screenWidth < 600 ? 15 : 20),
           Text(
             '© 2025 Nguyễn Thanh Minh. All rights reserved.',
-            style: AppStyle.button.copyWith(
+            style: AppStyle.subTitle.copyWith(
               fontSize: screenWidth < 600 ? 10 : 12,
               color: Colors.white60,
             ),

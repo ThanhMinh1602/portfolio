@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:new_portfolio/constants/app_color.dart';
 import 'package:new_portfolio/constants/app_style.dart';
+import 'package:new_portfolio/data/models/my_info_model.dart';
 import 'package:new_portfolio/gen/assets.gen.dart';
 import 'package:new_portfolio/pages/home/widgets/gradient_text_custom.dart';
+import 'package:new_portfolio/utils/animation_utils.dart';
 
 class ObjectiveWidget extends StatelessWidget {
   const ObjectiveWidget({super.key});
@@ -24,39 +26,48 @@ class ObjectiveWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SvgPicture.asset(
-                  Assets.icons.star,
-                  width: screenWidth < 600 ? 20 : 30,
-                ),
-                SizedBox(width: 10),
-                GradientTextCustom(
-                  text: 'Career Objectives',
-                  colors: AppColor.grapeGradient,
-                  style: AppStyle.title.copyWith(
-                    fontSize: screenWidth < 600 ? 28 : 36,
+            AnimationUtils.slideUpAnimation(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    Assets.icons.star,
+                    width: screenWidth < 600 ? 20 : 30,
                   ),
-                ),
-                SizedBox(width: 10),
-                SvgPicture.asset(
-                  Assets.icons.star,
-                  width: screenWidth < 600 ? 20 : 30,
-                ),
-              ],
+                  SizedBox(width: 10),
+                  GradientTextCustom(
+                    text: 'Career Objectives',
+                    colors: AppColor.grapeGradient,
+                    style: AppStyle.title.copyWith(
+                      fontSize: screenWidth < 600 ? 28 : 36,
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  SvgPicture.asset(
+                    Assets.icons.star,
+                    width: screenWidth < 600 ? 20 : 30,
+                  ),
+                ],
+              ),
+              delay: Duration(milliseconds: 200), // Delay for title
             ),
             SizedBox(height: screenWidth < 600 ? 20 : 30),
-            _buildObjective(
-              'Short-term Goal',
-              'Become a professional Flutter developer with strong expertise in building cross-platform applications. Deliver high-performance Flutter apps with user-friendly UI/UX, compatible with Android and iOS.',
-              screenWidth,
+            AnimationUtils.slideUpAnimation(
+              child: _buildObjective(
+                'Short-term Goal',
+                myInfo.shortTermGoal,
+                screenWidth,
+              ),
+              delay: Duration(milliseconds: 400), // Delay for short-term goal
             ),
             SizedBox(height: screenWidth < 600 ? 15 : 20),
-            _buildObjective(
-              'Long-term Goal',
-              'Master mobile app development (Native Android/iOS, React Native, and emerging tech). Build innovative apps to solve real-world problems, lead teams, and contribute to the developer community through open-source and mentoring.',
-              screenWidth,
+            AnimationUtils.slideUpAnimation(
+              child: _buildObjective(
+                'Long-term Goal',
+                myInfo.longTermGoal,
+                screenWidth,
+              ),
+              delay: Duration(milliseconds: 600), // Delay for long-term goal
             ),
           ],
         ),
@@ -98,7 +109,7 @@ class ObjectiveWidget extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: AppStyle.button.copyWith(
+                  style: AppStyle.subTitle.copyWith(
                     fontSize: screenWidth < 600 ? 16 : 20,
                     fontWeight: FontWeight.bold,
                     color: Colors.white70,
@@ -107,7 +118,7 @@ class ObjectiveWidget extends StatelessWidget {
                 SizedBox(height: 8),
                 Text(
                   description,
-                  style: AppStyle.button.copyWith(
+                  style: AppStyle.subTitle.copyWith(
                     fontSize: screenWidth < 600 ? 12 : 14,
                     color: Colors.white60,
                   ),

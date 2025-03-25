@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:new_portfolio/gen/assets.gen.dart';
 import 'package:new_portfolio/components/footer/footer.dart';
 import 'package:new_portfolio/pages/home/widgets/my_info_widget.dart';
@@ -11,11 +10,13 @@ import 'package:new_portfolio/pages/home/widgets/objective_widget.dart';
 import 'package:new_portfolio/pages/home/widgets/education_widget.dart';
 import 'package:new_portfolio/pages/home/widgets/work_experience_widget.dart';
 import 'package:new_portfolio/pages/home/widgets/interests_widget.dart';
+import 'package:new_portfolio/utils/animation_utils.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _HomePageState createState() => _HomePageState();
 }
 
@@ -64,68 +65,26 @@ class _HomePageState extends State<HomePage>
           ListView(
             controller: _scrollController,
             children: [
-              WelcomeWidget()
-                  .animate()
-                  .fadeIn(duration: 800.ms, curve: Curves.easeInOut)
-                  .slideY(begin: 0.5, end: 0.0),
+              WelcomeWidget(),
               SizedBox(height: screenWidth < 600 ? 10 : 20),
-              _buildSvgDivider(
-                Assets.icons.frame1,
-                screenWidth,
-              ).animate().scale(duration: 600.ms),
-              ObjectiveWidget()
-                  .animate()
-                  .fadeIn(duration: 800.ms, delay: 200.ms)
-                  .slideY(begin: 0.5, end: 0.0),
+              _buildSvgDivider(Assets.icons.frame1, screenWidth),
+              ObjectiveWidget(),
               SizedBox(height: screenWidth < 600 ? 10 : 20),
-              _buildSvgDivider(
-                Assets.icons.frame2,
-                screenWidth,
-              ).animate().scale(duration: 600.ms),
-              EducationWidget()
-                  .animate()
-                  .fadeIn(duration: 800.ms, delay: 400.ms)
-                  .slideY(begin: 0.5, end: 0.0),
+              _buildSvgDivider(Assets.icons.frame2, screenWidth),
+              EducationWidget(),
               SizedBox(height: screenWidth < 600 ? 10 : 20),
-              _buildSvgDivider(
-                Assets.icons.frame1,
-                screenWidth,
-              ).animate().scale(duration: 600.ms),
-              SkillWidget()
-                  .animate()
-                  .fadeIn(duration: 800.ms, delay: 600.ms)
-                  .slideY(begin: 0.5, end: 0.0),
+              _buildSvgDivider(Assets.icons.frame1, screenWidth),
+              SkillWidget(),
               SizedBox(height: screenWidth < 600 ? 10 : 20),
-              _buildSvgDivider(
-                Assets.icons.frame2,
-                screenWidth,
-              ).animate().scale(duration: 600.ms),
-              WorkExperienceWidget()
-                  .animate()
-                  .fadeIn(duration: 800.ms, delay: 800.ms)
-                  .slideY(begin: 0.5, end: 0.0),
+              _buildSvgDivider(Assets.icons.frame2, screenWidth),
+              WorkExperienceWidget(),
               SizedBox(height: screenWidth < 600 ? 10 : 20),
-              _buildSvgDivider(
-                Assets.icons.frame1,
-                screenWidth,
-              ).animate().scale(duration: 600.ms),
-              MyInfoWidget()
-                  .animate()
-                  .fadeIn(duration: 800.ms, delay: 1000.ms)
-                  .slideY(begin: 0.5, end: 0.0),
+              _buildSvgDivider(Assets.icons.frame1, screenWidth),
+              MyInfoWidget(),
               SizedBox(height: screenWidth < 600 ? 10 : 20),
-              _buildSvgDivider(
-                Assets.icons.frame2,
-                screenWidth,
-              ).animate().scale(duration: 600.ms),
-              InterestsWidget()
-                  .animate()
-                  .fadeIn(duration: 800.ms, delay: 1200.ms)
-                  .slideY(begin: 0.5, end: 0.0),
-              FooterWidget()
-                  .animate()
-                  .fadeIn(duration: 800.ms, delay: 1400.ms)
-                  .slideY(begin: 0.5, end: 0.0),
+              _buildSvgDivider(Assets.icons.frame2, screenWidth),
+              InterestsWidget(),
+              FooterWidget(),
             ],
           ),
         ],
@@ -134,14 +93,16 @@ class _HomePageState extends State<HomePage>
   }
 
   Widget _buildSvgDivider(String assetPath, double screenWidth) {
-    return Center(
-      child: Container(
-        width: screenWidth > 1440 ? 1440.0 : screenWidth * 0.9,
-        padding: EdgeInsets.symmetric(vertical: screenWidth < 600 ? 10 : 20),
-        child: SvgPicture.asset(
-          assetPath,
-          height: screenWidth < 600 ? screenWidth * 0.6 : null,
-          width: screenWidth < 600 ? screenWidth * 0.8 : null,
+    return AnimationUtils.slideUpAnimation(
+      child: Center(
+        child: Container(
+          width: screenWidth > 1440 ? 1440.0 : screenWidth * 0.9,
+          padding: EdgeInsets.symmetric(vertical: screenWidth < 600 ? 10 : 20),
+          child: SvgPicture.asset(
+            assetPath,
+            height: screenWidth < 600 ? screenWidth * 0.6 : null,
+            width: screenWidth < 600 ? screenWidth * 0.8 : null,
+          ),
         ),
       ),
     );

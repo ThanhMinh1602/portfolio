@@ -15,7 +15,7 @@ class ProjectModel {
     required this.technologies,
     required this.features,
     this.videoUrl,
-    this.branch,
+    this.branch = 'main',
     this.fontendLink,
     this.backendLink,
     this.timeline,

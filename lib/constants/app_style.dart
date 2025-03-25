@@ -13,10 +13,16 @@ class AppStyle {
     height: 64 / 48,
     color: Colors.white,
   );
-  static TextStyle button = TextStyle(
+  static TextStyle subTitle = TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.bold,
     height: 32 / 24,
     color: Colors.white,
+  );
+  static TextStyle content = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+
+    color: Colors.white70,
   );
 }
