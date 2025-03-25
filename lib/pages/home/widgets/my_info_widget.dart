@@ -3,85 +3,67 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:new_portfolio/constants/app_color.dart';
 import 'package:new_portfolio/constants/app_style.dart';
+import 'package:new_portfolio/data/models/project_model.dart';
 import 'package:new_portfolio/gen/assets.gen.dart';
-import 'package:new_portfolio/pages/details/project_detail_page.dart';
+import 'package:new_portfolio/pages/details/pages/project_detail_page.dart';
 
 class MyInfoWidget extends StatelessWidget {
   MyInfoWidget({super.key});
 
-  final List<Map<String, dynamic>> projects = [
-    {
-      'title': 'To Do',
-      'description':
-          'A task management app with authentication and CRUD operations.',
-      'technologies': [
+  final List<ProjectModel> projects = [
+    ProjectModel(
+      title: 'To Do',
+      description:
+          'A task management app with authentication and CRUD operations, built with clean architecture and automated CI/CD.',
+      technologies: [
         'Flutter',
         'Firebase',
-        'BLoC',
+        'Bloc State Management',
         'Clean Architecture',
-        'GitHub Actions',
+        'GitHub Actions (CI/CD)',
+        'Unit Test',
+        'Integration Test',
       ],
-      'features': [
-        'User login/logout',
-        'Add, edit, delete tasks',
-        'Real-time task syncing',
+      features: [
+        'Authentication (Login, Logout, Send OTP, Register, Forgot Password, Change Password)',
+        'CRUD operations for tasks (Create, Read, Update, Delete)',
+        'Unit and integration testing',
+        'Continuous Integration/Continuous Deployment (CI/CD) via GitHub Actions',
       ],
-      'videoUrl': Assets.videos.video1,
-      'link': 'https://github.com/ThanhMinhProjects/todo_bloc.git',
-    },
-    {
-      'title': 'Momentsy',
-      'description':
-          'A mobile app for capturing photos, sharing moments, and real-time chat.',
-      'technologies': [
+      videoUrl: 'assets/videos/video1.mp4',
+      branch: 'main',
+      fontendLink: 'https://github.com/ThanhMinhProjects/todo_bloc.git',
+      timeline: 'Dec 2024 - Present', // Thêm timeline
+    ),
+    ProjectModel(
+      title: 'Momentsy',
+      description:
+          'A mobile application that enables users to capture photos, share moments, chat in real-time, and connect with friends via QR codes.',
+      technologies: [
         'Flutter',
         'GetX',
+        'MVVM',
         'Node.js',
+        'Express.js',
         'WebSocket',
         'Google Cloud',
+        'Google Drive API',
       ],
-      'features': [
-        'Photo capture and upload',
-        'Real-time messaging',
-        'Social sharing',
+      features: [
+        'Authentication (Login, Logout, Registration, Forgot Password, Change Password, OTP Sending)',
+        'Photo capture and upload to Google Drive',
+        'Real-time messaging with WebSocket',
+        'Add friends via QR code',
+        'Push notifications',
+        'User profile updates',
       ],
-      'videoUrl': Assets.videos.video1,
-      'link': 'https://github.com/ThanhMinh1602/momentsy',
-    },
-    {
-      'title': 'Aloo',
-      'description': 'A sim card selling app for Vietnamese people in Japan.',
-      'technologies': ['Flutter', 'Firebase', 'Python'],
-      'features': ['Browse SIM card plans', 'Online payment', 'Order tracking'],
-      'videoUrl': Assets.videos.video1,
-      'link': 'https://play.google.com/store/apps/details?id=jp.aloo',
-    },
-    {
-      'title': 'Rikai Assistant',
-      'description': 'A chat bot for task progress reporting on Google Chat.',
-      'technologies': ['Express.js', 'MySQL', 'Docker', 'Google Cloud'],
-      'features': [
-        'Task status updates',
-        'Integration with Google Chat',
-        'Automated reminders',
-      ],
-      'videoUrl': Assets.videos.video1,
-      'link': null,
-    },
-    {
-      'title': 'Global Camera',
-      'description': 'An app for streaming and managing camera videos on AWS.',
-      'technologies': ['Flutter', 'PHP Laravel', 'AWS'],
-      'features': [
-        'Live video streaming',
-        'Camera management dashboard',
-        'Cloud storage integration',
-      ],
-      'videoUrl': Assets.videos.video1,
-      'link': null,
-    },
+      videoUrl: 'assets/videos/video1.mp4',
+      branch: 'main',
+      fontendLink: 'https://github.com/ThanhMinh1602/momentsy',
+      backendLink: 'https://github.com/ThanhMinh1602/doodle_mood_server',
+      timeline: 'Early March 2025 - Present',
+    ),
   ];
-
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -122,25 +104,14 @@ class MyInfoWidget extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder:
-                    (context) => ProjectDetailPage(
-                      title: projects[index]['title'],
-                      description: projects[index]['description'],
-                      technologies:
-                          projects[index]['technologies'] as List<String>,
-                      features: projects[index]['features'] as List<String>,
-                      videoUrl: projects[index]['videoUrl'],
-                      link: projects[index]['link'],
-                      repoOwner: 'ThanhMinh1602',
-                      repoName: 'momentsy',
-                      imagePath:
-                          null, // Nếu muốn thêm ảnh, bổ sung vào projects
-                    ),
+                    (context) =>
+                        ProjectDetailPage(projectModel: projects[index]),
               ),
             );
           },
           child: _buildProjectCard(
-            projects[index]['title'],
-            projects[index]['description'],
+            projects[index].title,
+            projects[index].description,
             screenWidth,
           ),
         ),

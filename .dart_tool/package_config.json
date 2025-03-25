@@ -176,6 +176,18 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "dio",
+      "rootUri": "file:///Users/nguyenthanhminh/.pub-cache/hosted/pub.dev/dio-5.8.0+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "dio_web_adapter",
+      "rootUri": "file:///Users/nguyenthanhminh/.pub-cache/hosted/pub.dev/dio_web_adapter-2.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
       "name": "fake_async",
       "rootUri": "file:///Users/nguyenthanhminh/.pub-cache/hosted/pub.dev/fake_async-1.3.2",
       "packageUri": "lib/",
@@ -276,6 +288,12 @@
       "rootUri": "file:///Users/nguyenthanhminh/.pub-cache/hosted/pub.dev/frontend_server_client-4.0.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
+    },
+    {
+      "name": "get",
+      "rootUri": "file:///Users/nguyenthanhminh/.pub-cache/hosted/pub.dev/get-4.7.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
     },
     {
       "name": "glob",
@@ -734,7 +752,7 @@
       "languageVersion": "3.7"
     }
   ],
-  "generated": "2025-03-24T20:10:29.812169Z",
+  "generated": "2025-03-25T08:49:07.535943Z",
   "generator": "pub",
   "generatorVersion": "3.7.2",
   "flutterRoot": "file:///Applications/flutter",
