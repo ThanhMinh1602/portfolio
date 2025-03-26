@@ -9,7 +9,6 @@ import 'package:new_portfolio/services/my_info_service.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
-
   await initServices();
 
   runApp(const MyApp());

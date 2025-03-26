@@ -42,14 +42,15 @@ dependencies:
   gradient_borders: ^1.0.1
   flutter_svg: ^2.0.17
   lottie: ^3.3.1
-  video_player: ^2.9.3
-  video_player_web: ^2.3.4
   flutter_syntax_view: ^4.1.7
   universal_html: ^2.2.4
   animated_tree_view: ^2.3.0
   flutter_dotenv: ^5.2.1
   get: ^4.7.2
   dio: ^5.8.0+1
+  youtube_player_flutter: ^9.1.1
+  youtube_player_iframe: ^5.2.1
+  pointer_interceptor: ^0.10.1+2
 
 dev_dependencies:
   flutter_test:

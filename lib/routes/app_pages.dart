@@ -1,10 +1,8 @@
 import 'package:get/get.dart';
-import 'package:new_portfolio/pages/home/home_page.dart';
 import 'package:new_portfolio/pages/home/home_binding.dart';
+import 'package:new_portfolio/pages/home/home_page.dart';
+import 'package:new_portfolio/pages/projectdetails/bindings/project_details_binding.dart';
 import 'package:new_portfolio/pages/projectdetails/pages/project_details_page.dart';
-import 'package:new_portfolio/pages/projectdetails/project_details_binding.dart';
-import 'package:new_portfolio/pages/companydetails/company_details_page.dart';
-import 'package:new_portfolio/pages/companydetails/company_details_binding.dart';
 import 'package:new_portfolio/routes/app_routes.dart';
 
 class AppPages {
@@ -18,11 +16,6 @@ class AppPages {
       name: AppRoutes.PROJECT_DETAILS,
       page: () => ProjectDetailsPage(),
       binding: ProjectDetailsBinding(),
-    ),
-    GetPage(
-      name: AppRoutes.COMPANY_DETAILS,
-      page: () => const CompanyDetailsPage(),
-      binding: CompanyDetailsBinding(),
     ),
   ];
 }

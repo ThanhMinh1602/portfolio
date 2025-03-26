@@ -72,7 +72,10 @@ class HomePage extends GetView<HomeController> {
                   SkillWidget(homeController: homeController),
                   SizedBox(height: screenWidth < 600 ? 10 : 20),
                   _buildSvgDivider(Assets.icons.frame2, screenWidth),
-                  WorkExperienceWidget(homeController: homeController),
+                  WorkExperienceWidget(
+                    homeController: homeController,
+                    companies: homeController.myInfo.value!.workExperience,
+                  ),
                   SizedBox(height: screenWidth < 600 ? 10 : 20),
                   _buildSvgDivider(Assets.icons.frame1, screenWidth),
                   MyInfoWidget(homeController: homeController),

@@ -17,7 +17,6 @@ class MyInfoModel {
 
   final List<CompanyModel> workExperience;
   final List<ProjectModel> personalProjects;
-  final List<ProjectModel> workProjects;
   final List<String> interests;
 
   MyInfoModel({
@@ -33,7 +32,6 @@ class MyInfoModel {
     required this.skills,
     required this.workExperience,
     required this.personalProjects,
-    required this.workProjects,
     required this.interests,
   });
 }

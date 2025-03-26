@@ -64,10 +64,7 @@ class MyInfoService extends GetxService {
 
   Future<void> fetchProjects() async {
     if (_myInfo.value != null) {
-      _projects.value = [
-        ..._myInfo.value!.personalProjects,
-        ..._myInfo.value!.workProjects,
-      ];
+      _projects.value = [..._myInfo.value!.personalProjects];
     }
   }
 }

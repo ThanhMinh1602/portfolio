@@ -1,27 +1,19 @@
 import 'dart:convert';
-import 'dart:math';
 import 'package:flutter/foundation.dart' show compute;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:new_portfolio/data/models/project_model.dart';
 import 'package:new_portfolio/utils/github_parser.dart';
-import 'package:video_player/video_player.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class ProjectDetailsController extends GetxController {
   // Project data
   final project = Rx<ProjectModel?>(null);
   final isLoading = true.obs;
 
-  ProjectDetailsController({ProjectModel? projectModel}) {
-    if (projectModel != null) {
-      project.value = projectModel;
-      isLoading.value = false;
-    }
-  }
-
   // Video player state
-  VideoPlayerController? videoController;
+  YoutubePlayerController? youtubeController;
   final isVideoInitialized = false.obs;
   final videoError = ''.obs;
 
@@ -34,6 +26,13 @@ class ProjectDetailsController extends GetxController {
   final errorMessage = ''.obs;
   final Map<String, String> _fileContentCache = {};
   final String? _githubToken = dotenv.env['KEY_GITHUB_API'];
+
+  ProjectDetailsController({ProjectModel? projectModel}) {
+    if (projectModel != null) {
+      project.value = projectModel;
+      isLoading.value = false;
+    }
+  }
 
   @override
   void onInit() {
@@ -59,7 +58,6 @@ class ProjectDetailsController extends GetxController {
       final String? projectId = Get.parameters['id'];
 
       if (projectId != null) {
-        // Demo data - replace with actual API call if needed
         project.value = ProjectModel(
           title: "Demo Project",
           description: "This is a demo project description",
@@ -86,34 +84,29 @@ class ProjectDetailsController extends GetxController {
       return;
     }
 
-    try {
-      videoController =
-          videoUrl.startsWith('https')
-              ? VideoPlayerController.networkUrl(Uri.parse(videoUrl))
-              : VideoPlayerController.asset(videoUrl);
-
-      videoController!
-          .initialize()
-          .then((_) {
-            isVideoInitialized.value = true;
-            videoController!.play();
-          })
-          .catchError((error) {
-            videoError.value = 'Error initializing video: $error';
-            isVideoInitialized.value = false;
-          });
-
-      videoController!.addListener(() {
-        if (videoController!.value.hasError) {
-          videoError.value =
-              'Video error: ${videoController!.value.errorDescription}';
-        }
-        update();
-      });
-    } catch (e) {
-      videoError.value = 'Unexpected error initializing video: $e';
+    final videoId = YoutubePlayer.convertUrlToId(videoUrl);
+    if (videoId != null) {
+      youtubeController = YoutubePlayerController(
+        initialVideoId: videoId,
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+          mute: false,
+          showLiveFullscreenButton: false,
+          enableCaption: true,
+          captionLanguage: 'en',
+        ),
+      );
+      isVideoInitialized.value = true;
+    } else {
+      videoError.value = 'Invalid YouTube URL';
       isVideoInitialized.value = false;
     }
+  }
+
+  @override
+  void onClose() {
+    youtubeController?.dispose();
+    super.onClose();
   }
 
   Future<void> _fetchAllFiles({String? customLink}) async {
@@ -135,7 +128,7 @@ class ProjectDetailsController extends GetxController {
     final linkToUse = customLink ?? projectData.fontendLink;
     final repoOwner = GitHubParser.getRepoOwner(linkToUse);
     final repoName = GitHubParser.getRepoName(linkToUse);
-    final branch = projectData.branch ?? 'main'; // Default to 'main' if null
+    final branch = projectData.branch ?? 'main';
 
     print('GitHub API Request Details:');
     print('- Repository Link: $linkToUse');
@@ -279,49 +272,5 @@ class ProjectDetailsController extends GetxController {
   static String _decodeFileContent(String base64Content) {
     final sanitizedBase64 = base64Content.replaceAll('\n', '');
     return utf8.decode(base64.decode(sanitizedBase64));
-  }
-
-  // Video control methods
-  void playPause() {
-    if (videoController?.value.isPlaying ?? false) {
-      videoController?.pause();
-    } else {
-      videoController?.play();
-    }
-  }
-
-  void replay() {
-    videoController?.seekTo(Duration.zero);
-    videoController?.play();
-  }
-
-  void stop() {
-    videoController?.pause();
-    videoController?.seekTo(Duration.zero);
-  }
-
-  void fastForward() {
-    if (videoController != null && isVideoInitialized.value) {
-      final currentPosition = videoController!.value.position;
-      final duration = videoController!.value.duration;
-      final newPosition = currentPosition + const Duration(seconds: 10);
-      videoController!.seekTo(newPosition < duration ? newPosition : duration);
-    }
-  }
-
-  void rewind() {
-    if (videoController != null && isVideoInitialized.value) {
-      final currentPosition = videoController!.value.position;
-      final newPosition = currentPosition - const Duration(seconds: 10);
-      videoController!.seekTo(
-        newPosition > Duration.zero ? newPosition : Duration.zero,
-      );
-    }
-  }
-
-  @override
-  void onClose() {
-    videoController?.dispose();
-    super.onClose();
   }
 }
