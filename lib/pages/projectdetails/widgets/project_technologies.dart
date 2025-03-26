@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:new_portfolio/constants/app_style.dart';
+import 'package:new_portfolio/res/constants/app_style.dart';
 
 class ProjectTechnologies extends StatelessWidget {
   final List<String> technologies;

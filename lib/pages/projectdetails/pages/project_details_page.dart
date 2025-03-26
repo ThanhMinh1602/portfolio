@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:new_portfolio/components/footer/footer.dart';
+import 'package:new_portfolio/res/components/footer/footer.dart';
 import 'package:new_portfolio/pages/projectdetails/controllers/project_details_controller.dart';
 import 'package:new_portfolio/pages/projectdetails/widgets/project_description.dart';
 import 'package:new_portfolio/pages/projectdetails/widgets/project_features.dart';

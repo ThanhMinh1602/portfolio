@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:new_portfolio/gen/assets.gen.dart';
-import 'package:new_portfolio/components/footer/footer.dart';
 import 'package:new_portfolio/pages/home/widgets/my_info_widget.dart';
 import 'package:new_portfolio/pages/home/widgets/skill_widget.dart';
 import 'package:new_portfolio/pages/home/widgets/welcome_widget.dart';
@@ -11,6 +10,7 @@ import 'package:new_portfolio/pages/home/widgets/objective_widget.dart';
 import 'package:new_portfolio/pages/home/widgets/education_widget.dart';
 import 'package:new_portfolio/pages/home/widgets/work_experience_widget.dart';
 import 'package:new_portfolio/pages/home/widgets/interests_widget.dart';
+import 'package:new_portfolio/res/components/footer/footer.dart';
 import 'package:new_portfolio/utils/animation_utils.dart';
 import 'package:new_portfolio/pages/home/controllers/home_controller.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_syntax_view/flutter_syntax_view.dart';
 import 'package:get/get.dart';
-import 'package:new_portfolio/constants/app_style.dart';
+import 'package:new_portfolio/res/constants/app_style.dart';
 import 'package:new_portfolio/data/models/project_model.dart';
 import 'package:new_portfolio/pages/projectdetails/controllers/project_details_controller.dart';
 import 'package:new_portfolio/utils/github_parser.dart';

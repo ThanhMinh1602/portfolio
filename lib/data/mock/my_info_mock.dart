@@ -6,16 +6,18 @@ import 'package:new_portfolio/data/models/my_info_model.dart';
 
 // Thông tin cá nhân cơ bản
 final basicInfo = MyInfoModel(
-  name: "Nguyễn Thanh Minh",
+  name: "Nguyen Thanh Minh",
   phone: "0798334803",
   email: "ntminh16201@gmail.com",
   github: "https://github.com/ThanhMinh1602",
-  location: "k583/15 Tôn Đức Thắng, Hòa Khánh Nam, Liên Chiểu, TP Đà Nẵng",
+  location:
+      "K583/15 Ton Duc Thang Street, Hoa Khanh Nam Ward, Lien Chieu District, Da Nang City",
   role: "Mobile Developer",
   shortTermGoal:
-      "Become a professional Flutter developer with strong expertise in building cross-platform applications.",
+      "Aspire to become a highly skilled and professional Flutter developer, mastering the art of creating efficient, scalable, and visually appealing cross-platform applications that deliver exceptional user experiences across both iOS and Android platforms.",
+
   longTermGoal:
-      "Gain comprehensive knowledge of mobile app development, including Native and cross-platform technologies, and contribute to the developer community.",
+      "Aim to acquire in-depth and comprehensive knowledge of mobile app development, encompassing both Native technologies (such as Swift for iOS and Kotlin for Android) and cross-platform frameworks like Flutter and React Native, while actively contributing to the developer community through sharing expertise, building innovative tools, and mentoring aspiring developers.",
   education: educationData,
   skills: skillsData,
   workExperience: workExperienceData,
@@ -64,8 +66,9 @@ final workExperienceData = [
     duration: "Nov 2023 - Oct 2024",
     location: "Vietnam",
     description:
-        "Developed a mobile app for a client using Flutter and Firebase, with features such as authentication, CRUD operations, and CI/CD integration.",
+        "Learned Bloc State Management, Flutter Clean Architecture, and Postman. Practiced teamwork skills and deepened knowledge of Git (GitLab). Explored and utilized Backlog as a project management tool. Participated in real company projects, gained insights into React Native, and contributed to writing a chat bot using Express.js for internal project management.",
     projects: [
+      // Aloo
       ProjectModel(
         title: "Aloo",
         description:
@@ -79,7 +82,9 @@ final workExperienceData = [
         fontendLink: "https://play.google.com/store/apps/details?id=jp.aloo",
         timeline: "Nov 2023 - Oct 2024",
         videoUrl: "https://www.youtube.com/watch?v=XVXzLh2SY58",
+        role: "Multi-language, bug fixing,...",
       ),
+      // Rikai Assistant
       ProjectModel(
         title: "Rikai Assistant",
         description:
@@ -100,7 +105,10 @@ final workExperienceData = [
         ],
         timeline: "Nov 2023 - Oct 2024",
         videoUrl: "https://www.youtube.com/watch?v=XVXzLh2SY58",
+        role:
+            "Mainly responsible for implementing the described functionalities.",
       ),
+      // Global Camera
       ProjectModel(
         title: "Global Camera",
         description:
@@ -108,6 +116,7 @@ final workExperienceData = [
         technologies: ["Flutter", "PHP Laravel", "AWS"],
         features: ["Live streaming", "Video trimming", "AWS integration"],
         timeline: "Nov 2023 - Oct 2024",
+        role: "UI design, API interaction, bug fixing,...",
       ),
     ],
   ),
@@ -115,6 +124,7 @@ final workExperienceData = [
 
 // Dự án cá nhân
 final personalProjectsData = [
+  // To Do
   ProjectModel(
     title: "To Do",
     description:
@@ -123,9 +133,10 @@ final personalProjectsData = [
       "Flutter",
       "Firebase",
       "BLoC",
-      "GitHub Actions",
+      "GitHub Actions(CI/CD)",
       "Unit Test",
       "Integration Test",
+      "Clean Architecture",
     ],
     features: [
       "Authentication",
@@ -135,12 +146,13 @@ final personalProjectsData = [
     ],
     fontendLink: "https://github.com/ThanhMinhProjects/todo_bloc.git",
     timeline: "Dec 2024 - Present",
-    videoUrl: "https://www.youtube.com/watch?v=XVXzLh2SY58",
+    // videoUrl: "https://www.youtube.com/watch?v=XVXzLh2SY58",
   ),
+  // Momentsy
   ProjectModel(
     title: "Momentsy",
     description:
-        "A social media app for capturing and sharing moments, with real-time chat and QR code connections.",
+        "Momentsy is a mobile application that enables users to capture photos, share moments, chat, and connect with friends via QR codes. The app features real-time messaging through WebSocket, image storage on Google Drive API, and a secure authentication system.",
     technologies: [
       "Flutter",
       "GetX",
@@ -149,18 +161,23 @@ final personalProjectsData = [
       "Express.js",
       "WebSocket",
       "Google Cloud",
+      "Firebase(push notification)",
     ],
     features: [
-      "Real-time chat",
-      "QR code friend-adding",
-      "Push notifications",
-      "Google Drive integration",
+      "Authentication (Login, Logout, Registration, Forgot Password, Change Password, OTP)",
+      "Camera Integration",
+      "File Uploads to Google Drive",
+      "Real-time Chat with WebSocket",
+      "QR Code Friend-Adding",
+      "Push Notifications",
+      "User Profile Updates",
     ],
     fontendLink: "https://github.com/ThanhMinh1602/momentsy",
     backendLink: "https://github.com/ThanhMinh1602/doodle_mood_server",
     timeline: "Early March 2025 - Present",
-    videoUrl: "https://www.youtube.com/watch?v=FQ_6yX54j1A",
+    // videoUrl: "https://www.youtube.com/watch?v=FQ_6yX54j1A",
   ),
+  // Task management integrated with Gemini
   ProjectModel(
     title: "Task management integrated with Gemini",
     description:
@@ -183,6 +200,7 @@ final personalProjectsData = [
     timeline: "Dec 12, 2024 - End of Dec, 2024",
     videoUrl: "https://www.youtube.com/watch?v=XVXzLh2SY58",
   ),
+  // Capybara Game
   ProjectModel(
     title: "Capybara Game",
     description:
@@ -190,8 +208,38 @@ final personalProjectsData = [
     technologies: ["Flutter", "Bloc", "Shared Preferences"],
     features: ["Memory game", "Score tracking", "Difficulty levels"],
     fontendLink: "https://github.com/ThanhMinh1602/capybara_game",
+    branch: "develop",
     timeline: "Jul 2024 - Aug 2024",
-    videoUrl: "https://www.youtube.com/watch?v=FQ_6yX54j1A",
+    videoUrl: "https://www.youtube.com/watch?v=qcPKol5c_7U",
+  ),
+  //Nike shoes Shop
+  ProjectModel(
+    title: "Nike Shoe Shop",
+    description:
+        "A mobile app and web admin system for a Nike shoe shop, featuring authentication, product management, and payment integration.",
+    technologies: [
+      "Flutter",
+      "Firebase",
+      "Bloc State Management",
+      "Clean Architecture",
+      "Paypal Api",
+    ],
+    features: [
+      "Authentication",
+      "Paypal Payment",
+      "Search Product",
+      "Cart Management",
+      "Product Management (Web Admin)",
+      "Category Management (Web Admin)",
+      "Order Management (Web Admin)",
+      "Employee Management (Web Admin)",
+    ],
+    fontendLink:
+        "https://github.com/ThanhMinh1602/nike_shoe_shop.git", // Mobile source code
+    backendLink:
+        "https://github.com/ThanhMinh1602/web_admin.git", // Web admin source code
+    timeline: "Mar 10 - Apr 13, 2024",
+    // videoUrl: "https://www.youtube.com/watch?v=XVXzLh2SY58",
   ),
 ];
 

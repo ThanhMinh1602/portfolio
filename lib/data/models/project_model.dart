@@ -8,6 +8,7 @@ class ProjectModel {
   final String? fontendLink;
   final String? backendLink;
   final String? timeline;
+  final String? role;
 
   ProjectModel({
     required this.title,
@@ -19,6 +20,7 @@ class ProjectModel {
     this.fontendLink,
     this.backendLink,
     this.timeline,
+    this.role,
   });
 
   factory ProjectModel.fromMap(Map<String, dynamic> map) {
@@ -46,6 +48,7 @@ class ProjectModel {
       'link': fontendLink,
       'backendLink': backendLink,
       'timeline': timeline,
+      'role': role,
     };
   }
 }

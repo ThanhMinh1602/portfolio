@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/foundation.dart';
 import 'package:new_portfolio/utils/youtube_parser.dart';
-import 'package:pointer_interceptor/pointer_interceptor.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 class ProjectVideo extends StatefulWidget {

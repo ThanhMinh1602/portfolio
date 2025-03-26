@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
-import 'package:new_portfolio/constants/app_color.dart';
-import 'package:new_portfolio/constants/app_style.dart';
 import 'package:new_portfolio/gen/assets.gen.dart';
 import 'package:new_portfolio/pages/home/controllers/home_controller.dart';
 import 'package:new_portfolio/pages/home/widgets/gradient_text_custom.dart';
+import 'package:new_portfolio/res/constants/app_color.dart';
+import 'package:new_portfolio/res/constants/app_style.dart';
 import 'package:new_portfolio/utils/animation_utils.dart'; // Import the utility
 
 class SkillWidget extends StatelessWidget {
