@@ -4,12 +4,13 @@ import 'package:new_portfolio/constants/app_color.dart';
 import 'package:new_portfolio/constants/app_style.dart';
 import 'package:new_portfolio/data/models/my_info_model.dart';
 import 'package:new_portfolio/gen/assets.gen.dart';
+import 'package:new_portfolio/pages/home/controllers/home_controller.dart';
 import 'package:new_portfolio/pages/home/widgets/gradient_text_custom.dart';
 import 'package:new_portfolio/utils/animation_utils.dart';
 
 class ObjectiveWidget extends StatelessWidget {
-  const ObjectiveWidget({super.key});
-
+  const ObjectiveWidget({super.key, required this.homeController});
+  final HomeController homeController;
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -55,7 +56,7 @@ class ObjectiveWidget extends StatelessWidget {
             AnimationUtils.slideUpAnimation(
               child: _buildObjective(
                 'Short-term Goal',
-                myInfo.shortTermGoal,
+                homeController.myInfo.value!.shortTermGoal,
                 screenWidth,
               ),
               delay: Duration(milliseconds: 400), // Delay for short-term goal
@@ -64,7 +65,7 @@ class ObjectiveWidget extends StatelessWidget {
             AnimationUtils.slideUpAnimation(
               child: _buildObjective(
                 'Long-term Goal',
-                myInfo.longTermGoal,
+                homeController.myInfo.value!.longTermGoal,
                 screenWidth,
               ),
               delay: Duration(milliseconds: 600), // Delay for long-term goal

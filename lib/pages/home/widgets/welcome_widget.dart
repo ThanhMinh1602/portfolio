@@ -6,12 +6,13 @@ import 'package:new_portfolio/constants/app_color.dart';
 import 'package:new_portfolio/constants/app_style.dart';
 import 'package:new_portfolio/data/models/my_info_model.dart';
 import 'package:new_portfolio/gen/assets.gen.dart';
+import 'package:new_portfolio/pages/home/controllers/home_controller.dart';
 import 'package:new_portfolio/pages/home/widgets/gradient_text_custom.dart';
 import 'package:new_portfolio/utils/animation_utils.dart'; // Import the utility
 
 class WelcomeWidget extends StatelessWidget {
-  const WelcomeWidget({super.key});
-
+  const WelcomeWidget({super.key, required this.homeController});
+  final HomeController homeController;
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -31,7 +32,7 @@ class WelcomeWidget extends StatelessWidget {
             SizedBox(height: screenWidth < 600 ? 10 : 16),
             AnimationUtils.slideUpAnimation(
               child: GradientTextCustom(
-                text: 'Hi. I’m ${myInfo.name}',
+                text: 'Hi. I’m ${homeController.myInfo.value!.name}',
                 colors: AppColor.grapeGradient,
                 style: AppStyle.hugeHeadline.copyWith(
                   fontSize: screenWidth < 600 ? 24 : 48,
@@ -52,7 +53,7 @@ class WelcomeWidget extends StatelessWidget {
                     .fadeIn(duration: 600.ms, delay: 600.ms), // Keep fade-in
                 SizedBox(width: 8),
                 Text(
-                      myInfo.role,
+                      homeController.myInfo.value!.role,
                       style: AppStyle.title.copyWith(
                         fontSize: screenWidth < 600 ? 18 : 24,
                         color: Colors.white70,
@@ -71,7 +72,7 @@ class WelcomeWidget extends StatelessWidget {
             SizedBox(height: 8),
             AnimationUtils.slideUpAnimation(
               child: Text(
-                myInfo.location,
+                homeController.myInfo.value!.location,
                 style: AppStyle.subTitle.copyWith(
                   fontSize: screenWidth < 600 ? 12 : 14,
                   color: Colors.white60,

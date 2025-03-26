@@ -3,7 +3,7 @@ import 'package:flutter_syntax_view/flutter_syntax_view.dart';
 import 'package:get/get.dart';
 import 'package:new_portfolio/constants/app_style.dart';
 import 'package:new_portfolio/data/models/project_model.dart';
-import 'package:new_portfolio/pages/projectdetails/controllers/project_detail_controller.dart';
+import 'package:new_portfolio/pages/projectdetails/controllers/project_details_controller.dart';
 import 'package:new_portfolio/utils/github_parser.dart';
 
 class ProjectRepoFiles extends StatelessWidget {
@@ -21,7 +21,7 @@ class ProjectRepoFiles extends StatelessWidget {
   Widget _buildFolderTree(
     Map<String, dynamic> folder,
     String parentPath,
-    ProjectDetailController controller,
+    ProjectDetailsController controller,
   ) {
     final sortedKeys =
         folder.keys.toList()..sort((a, b) {
@@ -93,7 +93,7 @@ class ProjectRepoFiles extends StatelessWidget {
     final tag = '$repoOwner-$repoName-$branch';
 
     Get.put(
-      ProjectDetailController(
+      ProjectDetailsController(
         projectModel: ProjectModel(
           title: '',
           description: '',
@@ -107,7 +107,7 @@ class ProjectRepoFiles extends StatelessWidget {
     );
 
     return Obx(() {
-      final controller = Get.find<ProjectDetailController>(tag: tag);
+      final controller = Get.find<ProjectDetailsController>(tag: tag);
       print(
         'UI rebuilding with isLoadingFiles: ${controller.isLoadingFiles.value}',
       );

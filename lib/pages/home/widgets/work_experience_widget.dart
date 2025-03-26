@@ -6,11 +6,12 @@ import 'package:new_portfolio/constants/app_style.dart';
 import 'package:new_portfolio/data/models/my_info_model.dart';
 import 'package:new_portfolio/gen/assets.gen.dart';
 import 'package:new_portfolio/pages/companydetails/company_detail_page.dart';
+import 'package:new_portfolio/pages/home/controllers/home_controller.dart';
 import 'package:new_portfolio/utils/animation_utils.dart';
 
 class WorkExperienceWidget extends StatelessWidget {
-  WorkExperienceWidget({super.key});
-  final workExperienceList = myInfo.workExperience;
+  WorkExperienceWidget({super.key, required this.homeController});
+  final HomeController homeController;
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +24,9 @@ class WorkExperienceWidget extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder:
-                  (context) =>
-                      CompanyDetailPage(company: myInfo.workExperience[0]),
+                  (context) => CompanyDetailPage(
+                    company: homeController.myInfo.value!.workExperience[0],
+                  ),
             ),
           );
         },
@@ -62,7 +64,9 @@ class WorkExperienceWidget extends StatelessWidget {
               // Hiển thị danh sách công ty
               Column(
                 children:
-                    workExperienceList.map((experience) {
+                    homeController.myInfo.value!.workExperience.map((
+                      experience,
+                    ) {
                       return AnimationUtils.slideUpAnimation(
                         child: Container(
                           margin: EdgeInsets.only(

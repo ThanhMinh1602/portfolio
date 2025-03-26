@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:new_portfolio/constants/app_color.dart';
 import 'package:new_portfolio/constants/app_style.dart';
 import 'package:new_portfolio/data/models/my_info_model.dart';
 import 'package:new_portfolio/gen/assets.gen.dart';
+import 'package:new_portfolio/pages/home/controllers/home_controller.dart';
 import 'package:new_portfolio/utils/animation_utils.dart'; // Import the utility
 
 class EducationWidget extends StatelessWidget {
-  const EducationWidget({super.key});
-
+  const EducationWidget({super.key, required this.homeController});
+  final HomeController homeController;
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -81,7 +83,7 @@ class EducationWidget extends StatelessWidget {
                         SizedBox(width: 8),
                         Flexible(
                           child: Text(
-                            myInfo.education.school,
+                            homeController.myInfo.value!.education.school,
                             style: AppStyle.subTitle.copyWith(
                               fontSize: screenWidth < 600 ? 16 : 20,
                               fontWeight: FontWeight.bold,
@@ -93,7 +95,7 @@ class EducationWidget extends StatelessWidget {
                     ),
                     SizedBox(height: 8),
                     Text(
-                      'Major: ${myInfo.education.major}',
+                      'Major: ${homeController.myInfo.value!.education.major}',
                       style: AppStyle.subTitle.copyWith(
                         fontSize: screenWidth < 600 ? 14 : 16,
                         color: Colors.white70,
@@ -101,7 +103,7 @@ class EducationWidget extends StatelessWidget {
                     ),
                     SizedBox(height: 8),
                     Text(
-                      'Duration: ${myInfo.education.duration}',
+                      'Duration: ${homeController.myInfo.value!.education.duration}',
                       style: AppStyle.subTitle.copyWith(
                         fontSize: screenWidth < 600 ? 12 : 14,
                         color: Colors.white60,

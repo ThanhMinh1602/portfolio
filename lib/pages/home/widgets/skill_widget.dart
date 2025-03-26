@@ -3,21 +3,21 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:new_portfolio/constants/app_color.dart';
 import 'package:new_portfolio/constants/app_style.dart';
-import 'package:new_portfolio/data/models/my_info_model.dart';
 import 'package:new_portfolio/gen/assets.gen.dart';
+import 'package:new_portfolio/pages/home/controllers/home_controller.dart';
 import 'package:new_portfolio/pages/home/widgets/gradient_text_custom.dart';
 import 'package:new_portfolio/utils/animation_utils.dart'; // Import the utility
 
 class SkillWidget extends StatelessWidget {
-  SkillWidget({super.key});
-
-  final skillCategories = {
-    for (var skill in myInfo.skills) skill.title: skill.skills,
-  };
+  SkillWidget({super.key, required this.homeController});
+  final HomeController homeController;
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
+    final skillCategories = {
+      for (var skill in homeController.skills) skill.title: skill.skills,
+    };
 
     return Center(
       child: ConstrainedBox(

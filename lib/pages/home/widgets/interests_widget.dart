@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:new_portfolio/constants/app_color.dart';
 import 'package:new_portfolio/constants/app_style.dart';
 import 'package:new_portfolio/data/models/my_info_model.dart';
 import 'package:new_portfolio/gen/assets.gen.dart';
+import 'package:new_portfolio/pages/home/controllers/home_controller.dart';
 import 'package:new_portfolio/utils/animation_utils.dart'; // Import the utility
 
 class InterestsWidget extends StatelessWidget {
-  InterestsWidget({super.key});
-
-  final List<String> interests = myInfo.interests;
+  const InterestsWidget({super.key, required this.homeController});
+  final HomeController homeController;
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
+    final interests = homeController.myInfo.value?.interests ?? [];
 
     return Center(
       child: Container(

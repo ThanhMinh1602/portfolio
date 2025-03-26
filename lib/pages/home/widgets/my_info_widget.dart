@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:new_portfolio/constants/app_color.dart';
 import 'package:new_portfolio/constants/app_style.dart';
 import 'package:new_portfolio/data/models/my_info_model.dart';
 import 'package:new_portfolio/data/models/project_model.dart';
 import 'package:new_portfolio/gen/assets.gen.dart';
-import 'package:new_portfolio/pages/projectdetails/pages/project_detail_page.dart';
+import 'package:new_portfolio/pages/home/controllers/home_controller.dart';
+import 'package:new_portfolio/pages/projectdetails/pages/project_details_page.dart';
 import 'package:new_portfolio/utils/animation_utils.dart'; // Import the utility
 
 class MyInfoWidget extends StatelessWidget {
-  MyInfoWidget({super.key});
+  const MyInfoWidget({super.key, required this.homeController});
 
-  final List<ProjectModel> projects = myInfo.personalProjects;
+  final HomeController homeController;
 
   @override
   Widget build(BuildContext context) {
@@ -50,21 +52,14 @@ class MyInfoWidget extends StatelessWidget {
       runSpacing: screenWidth < 600 ? 10 : 20,
       alignment: WrapAlignment.center,
       children: List.generate(
-        projects.length,
+        homeController.projects.length,
         (index) => AnimationUtils.slideUpAnimation(
           child: _buildProjectCard(
-            projects[index].title,
-            projects[index].description,
+            homeController.projects[index].title,
+            homeController.projects[index].description,
             screenWidth,
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder:
-                      (context) =>
-                          ProjectDetailPage(projectModel: projects[index]),
-                ),
-              );
+              homeController.goToProjectDetails(homeController.projects[index]);
             },
           ),
           delay: Duration(
